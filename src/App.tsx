@@ -1,4 +1,4 @@
-import "./styles.css";
+import * as React from "react";
 
 const dateSize = 15;
 const widthTrim = 5;
