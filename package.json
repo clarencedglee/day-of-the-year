@@ -1,8 +1,8 @@
 {
-  "name": "react-typescript",
+  "name": "day-of-the-year",
   "version": "1.0.0",
-  "description": "React and TypeScript example starter project",
-  "keywords": ["typescript", "react", "starter"],
+  "description": "Shows which day you are in the year",
+  "keywords": [],
   "main": "src/index.tsx",
   "dependencies": {
     "react": "17.0.1",
@@ -22,5 +22,13 @@
     "build": "parcel build ./src/index.html --out-dir ./docs",
     "test": "jest"
   },
-  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "repository": "git@github.com:clarencedglee/day-of-the-year.git",
+  "author": "Clarence Lee <clarencedglee@gmail.com>",
+  "license": "MIT"
 }
