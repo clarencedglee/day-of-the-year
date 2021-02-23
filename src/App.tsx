@@ -6,7 +6,7 @@ const height = (dateSize + 2) * 7;
 const futureColor = "36, 17%, 89%";
 const pastColor = (n: number) => `${n / 3 + 20}, 100%, ${60 + 1.2 * (n / 7)}%`;
 
-function daysIntoYear(date: Date) {
+export function daysIntoYear(date: Date) {
   return (
     (Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) -
       Date.UTC(date.getFullYear(), 0, 0)) /
@@ -17,7 +17,11 @@ function daysIntoYear(date: Date) {
   );
 }
 
-export default function App() {
+export const percentPassedOfYear = (date: Date) => {
+  return daysIntoYear(date) / 364;
+};
+
+export function App() {
   const today = daysIntoYear(new Date());
   return (
     <>
@@ -30,7 +34,7 @@ export default function App() {
           flexWrap: "wrap",
           flexDirection: "column-reverse",
           alignContent: "flex-start",
-          alignItems: "flex-start"
+          alignItems: "flex-start",
         }}
       >
         {Array(364)
@@ -47,7 +51,7 @@ export default function App() {
                 borderTop: 0,
                 borderLeft: 0,
                 width: `${dateSize - widthTrim}px`,
-                height: `${dateSize}px`
+                height: `${dateSize}px`,
               }}
             ></div>
           ))}
@@ -59,7 +63,7 @@ export default function App() {
           color: "hsl(36, 6%, 37%)",
           paddingTop: "10px",
           paddingLeft: "3px",
-          fontFamily: "sans-serif"
+          fontFamily: "sans-serif",
         }}
       >
         {today}
