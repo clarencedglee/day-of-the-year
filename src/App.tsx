@@ -2,7 +2,7 @@ import * as React from "react";
 
 const dateSize = 15;
 const widthTrim = 5;
-const height = (dateSize + 2) * 7;
+const height = 113;
 const futureColor = "36, 17%, 89%";
 const pastColor = (n: number) => `${n / 3 + 20}, 100%, ${60 + 1.2 * (n / 7)}%`;
 
