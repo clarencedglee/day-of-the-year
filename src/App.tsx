@@ -6,7 +6,7 @@ const height = (dateSize + 2) * 7;
 const futureColor = "36, 17%, 89%";
 const pastColor = (n: number) => `${n / 3 + 20}, 100%, ${60 + 1.2 * (n / 7)}%`;
 
-export function daysIntoYear(date: Date) {
+export function daysIntoYear(date: Date): number {
   return (
     (Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) -
       Date.UTC(date.getFullYear(), 0, 0)) /
@@ -17,12 +17,18 @@ export function daysIntoYear(date: Date) {
   );
 }
 
-export const percentPassedOfYear = (date: Date) => {
+export const percentIntoYear = (date: Date): number => {
   return daysIntoYear(date) / 364;
 };
 
+export const weeksIntoYear = (date: Date): number => {
+  return Math.ceil(daysIntoYear(date) / 7);
+};
+
 export function App() {
-  const today = daysIntoYear(new Date());
+  const today = new Date();
+  const days = daysIntoYear(today);
+  const weeks = weeksIntoYear(today);
   return (
     <>
       <div
@@ -44,7 +50,7 @@ export function App() {
               key={index}
               style={{
                 backgroundColor:
-                  index + 1 <= today
+                  index + 1 <= days
                     ? `hsl(${pastColor(index)})`
                     : `hsl(${futureColor})`,
                 border: "1px solid white",
@@ -58,7 +64,7 @@ export function App() {
       </div>
       <div
         style={{
-          marginLeft: `${(dateSize + 1 - widthTrim) * Math.ceil(50 / 7) + 1}px`,
+          marginLeft: `${(dateSize + 1 - widthTrim) * weeks - 1}px`,
           borderLeft: "1px solid hsl(36, 6%, 37%)",
           color: "hsl(36, 6%, 37%)",
           paddingTop: "10px",
@@ -66,7 +72,8 @@ export function App() {
           fontFamily: "sans-serif",
         }}
       >
-        {today}
+        <span className="days">{days} days</span>{" "}
+        <span className="percent">{Math.ceil(days / 3.64)}%</span>
       </div>
     </>
   );
